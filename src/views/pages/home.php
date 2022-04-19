@@ -1,10 +1,10 @@
 <?php $render('header'); ?>
 
 
-<div class="container">
+<div class="container" style="margin-top:80px;">
   <h2 class="text-center mt-2">Cadastrar computador:</h2>
   <div class="col">
-    <form method="POST" action="<?php echo $base.'/add';?>">
+    <form method="POST" action="<?php echo $base . '/add'; ?>">
       <div class="row">
         <div class="col">
           <label for="marca"><strong>Marca:</strong></label>
@@ -29,19 +29,11 @@
         <div class="col">
           <label for="pa"><strong>Escolha uma Cidade/PA:</strong></label>
           <select name="pa_cidade" id="pa" class="form-select">
-          <option></option>
-            <option value="00">00 | Morrinhos</option>
-            <option value="01">01 | Água Limpa</option>
-            <option value="02">02 | Pontalina</option>
-            <option value="03">03 | Caldas Novas</option>
-            <option value="04">04 | Buriti Alegre</option>
-            <option value="05">05 | Corumbaíba</option>
-            <option value="06">06 | Edealina</option>
-            <option value="07">07 | Marzagão</option>
-            <option value="08">08 | Rio Quente</option>
-            <option value="09">09 | Ouvidor</option>
-            <option value="97">97 | PA Digital</option>
-            <option value="99">99 | Morrinhos UAD</option>
+            <option></option>
+            <?php foreach ($citys as $city) : ?>
+              <option value="<?php echo $city['pk_city'];?>"><?php echo $city['numberCity']." | ".$city['nameCity'];?></option>
+            <?php endforeach; ?>
+
 
           </select>
         </div>

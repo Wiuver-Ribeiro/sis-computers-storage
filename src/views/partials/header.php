@@ -14,7 +14,7 @@
 
 <body>
 
-  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <nav class="navbar navbar-expand-lg navbar-light bg-light" style="position: fixed; top:0; left:0; right:0; margin-bottom:50px;">
     <div class="container-fluid">
       <a class="navbar-brand" href="#">
         <img class="img img-fluid" src="<?php echo $base.'/assets/img/icon_app.png';?>" alt="" style="width:30px;">

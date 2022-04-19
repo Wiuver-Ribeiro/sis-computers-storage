@@ -4,11 +4,15 @@ namespace src\controllers;
 use \core\Controller;
 
 use \src\Models\Computer;
+use \src\Models\City;
 
 class ComputerController extends Controller {
 
     public function index() {
-        $this->render('home');
+      $citys = City::listAllCitys();
+        $this->render('home', [
+          "citys" => $citys,
+        ]);
     }
     public  function addComputer() {
       $marca = $_POST['marca'];
