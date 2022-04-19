@@ -12,20 +12,22 @@ class Computer extends Model
   private int $tempoUso;
 
   public function __construct($modelo, $marca, $numeroSerie, $tempoUso) {
-    // $this->setModelo($modelo);
-    // $this->setMarca($marca);
-    // $this->setNumeroSerie($numeroSerie);
-    // $this->setTempoUso($tempoUso);
-    var_dump([
-      "Modelo:" => $modelo,
-      "Marca:" => $marca,
-      "Série:" => $numeroSerie,
-      "Uso:" => $tempoUso
-    ]); die();
+    $this->setModelo($modelo);
+    $this->setMarca($marca);
+    $this->setNumeroSerie($numeroSerie);
+    $this->setTempoUso($tempoUso);
+
+    $this->addComputer($this->getModelo(), $this->getMarca(), $this->getNumeroSerie(), $this->getTempoUso());
   }
 
-  public function addComputer() {
-    
+  public function addComputer($marca, $modelo, $numeroSerie, $tempoUso) {
+    var_dump([
+      "Marca:" => $marca,
+      "Modelo:" => $modelo,
+      "Número Série:" => $numeroSerie,
+      "Tempo de Uso:" => $tempoUso
+    ]);
+    die();
   }
 
 
@@ -41,7 +43,7 @@ class Computer extends Model
   }
 
   public function setModelo($modelo) {
-    $this->modelo = $modelo;
+    $this->modelo = mb_strtoupper($modelo);
 
     return $this;
   }
@@ -53,7 +55,7 @@ class Computer extends Model
 
 
   public function setMarca($marca) {
-    $this->marca = $marca;
+    $this->marca = ucwords($marca);
 
     return $this;
   }
@@ -65,7 +67,7 @@ class Computer extends Model
 
 
   public function setNumeroSerie($numeroSerie) {
-    $this->numeroSerie = $numeroSerie;
+    $this->numeroSerie = mb_strtoupper($numeroSerie);
 
     return $this;
   }
