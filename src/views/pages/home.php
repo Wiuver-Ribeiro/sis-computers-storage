@@ -64,11 +64,11 @@ if (isset($_SESSION['success'])) {
           <th>PA|Cidade</th>
         </tr>
       </thead>
-      <tbody>
+      <tbody class="text-center">
         <?php foreach ($computers as $computer) : ?>
           <tr>
             <td><?php echo $computer['serialNumber']; ?></td>
-            <td><?php echo $computer['brand'];?></td>
+            <td><?php echo $computer['brand']; ?></td>
             <td><?php echo $computer['model']; ?></td>
             <td><?php echo $computer['timeUsed']; ?></td>
             <td><?php echo "{$computer['numberCity']} | {$computer['nameCity']}"; ?></td>

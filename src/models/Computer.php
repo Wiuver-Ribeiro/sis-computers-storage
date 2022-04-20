@@ -22,12 +22,6 @@ class Computer extends Model
 
   public function addComputer($marca, $modelo, $numeroSerie, $tempoUso,$cidade) {
     require __DIR__."../../../connect.php";
-    // echo "Chegou aqui!"; die();
-
-    // $tempoUsoFormatado  = new \DateTime($tempoUso);
-    // $date2  = new \DateTime();
-    // $diff = $date2->diff($date1);
-    // echo "Diferença de  {$diff->y} anos(s) , {$diff->d} dia(s), {$diff->m} mes(es)";
 
     if($this->verifyExistSerialNumber($numeroSerie)) {
       return false;
@@ -70,9 +64,22 @@ class Computer extends Model
     $sql->execute();
 
     $dados = $sql->fetchAll(\PDO::FETCH_ASSOC);
-    // $this->modifyTimeUsed($dados['timeUsed']);
-    // print_r($dados); die();
+
+      $newTime = Computer::modifyTimeUsed($dados['timeUsed']);
+      // $dados['timeUsed'] = $newTime;
+
     return $dados;
+
+
+  }
+
+  public static function modifyTimeUsed($timeInUsed) {
+
+    $tempoUsoFormatado  = new \DateTime($timeInUsed);
+    $date2  = new \DateTime();
+    $diff = $date2->diff($tempoUsoFormatado);
+    $time="{$diff->y} anos(s) , {$diff->d} dia(s), {$diff->m} mes(es)";
+    return $time;
   }
 
   public function editComputer() {
