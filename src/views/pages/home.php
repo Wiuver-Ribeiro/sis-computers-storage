@@ -1,5 +1,12 @@
 <?php $render('header'); ?>
+<?php
+if (isset($_SESSION['success'])) {
+  echo $_SESSION['success'];
+  unset($_SESSION['success']);
+  $_session['success'] = '';
+}
 
+?>
 
 <div class="container" style="margin-top:80px;">
   <h2 class="text-center mt-2">Cadastrar computador:</h2>
@@ -21,8 +28,8 @@
           <input type="text" class="form-control" placeholder="Número de série:" name="numeroSerie" autocomplete="off">
         </div>
         <div class="col">
-          <label for="modelo"><strong>Tempo de Uso:</strong></label>
-          <input type="text" class="form-control" placeholder="Tempo de uso:" name="tempoUso" autocomplete="off">
+          <label for="modelo"><strong>Data de compra:</strong></label>
+          <input type="date" class="form-control" placeholder="Tempo de uso:" name="tempoUso" autocomplete="off">
         </div>
       </div>
       <div class="row mt-4">
@@ -31,7 +38,7 @@
           <select name="pa_cidade" id="pa" class="form-select">
             <option></option>
             <?php foreach ($citys as $city) : ?>
-              <option value="<?php echo $city['pk_city'];?>"><?php echo $city['numberCity']." | ".$city['nameCity'];?></option>
+              <option value="<?php echo $city['pk_city']; ?>"><?php echo $city['numberCity'] . " | " . $city['nameCity']; ?></option>
             <?php endforeach; ?>
 
 
@@ -46,7 +53,7 @@
   </div>
 
   <div class="table-responsive mt-4">
-    <table class="table table-striped table-bordered table-hover">
+    <table class="table table-striped table-bordered table-hover table-sm">
       <h4 class>Todos computadores cadastrados:</h4>
       <thead class="thead-dark text-center">
         <tr>
@@ -58,13 +65,15 @@
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <td>BRJ527TV5W</td>
-          <td>HP</td>
-          <td>HP Compaq 8200 Elite</td>
-          <td>2 anos</td>
-          <td>00 | Morrinhos</td>
-        </tr>
+        <?php foreach ($computers as $computer) : ?>
+          <tr>
+            <td><?php echo $computer['serialNumber']; ?></td>
+            <td><?php echo $computer['brand'];?></td>
+            <td><?php echo $computer['model']; ?></td>
+            <td><?php echo $computer['timeUsed']; ?></td>
+            <td><?php echo "{$computer['numberCity']} | {$computer['nameCity']}"; ?></td>
+          </tr>
+        <?php endforeach; ?>
       </tbody>
     </table>
   </div>
