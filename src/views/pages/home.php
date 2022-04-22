@@ -15,21 +15,21 @@ if (isset($_SESSION['success'])) {
       <div class="row">
         <div class="col">
           <label for="marca"><strong>Marca:</strong></label>
-          <input type="text" class="form-control" placeholder="Marca do computador:" name="marca" autocomplete="off">
+          <input type="text" required class="form-control" placeholder="Marca do computador:" name="marca" autocomplete="off">
         </div>
         <div class="col">
           <label for="modelo"><strong>Modelo:</strong></label>
-          <input type="text" class="form-control" placeholder="Modelo do computador:" name="modelo" autocomplete="off">
+          <input type="text" required class="form-control" placeholder="Modelo do computador:" name="modelo" autocomplete="off">
         </div>
       </div>
       <div class="row mt-4">
         <div class="col">
           <label for="marca"><strong>Número de Série:</strong></label>
-          <input type="text" class="form-control" placeholder="Número de série:" name="numeroSerie" autocomplete="off">
+          <input type="text" required class="form-control" placeholder="Número de série:" name="numeroSerie" autocomplete="off">
         </div>
         <div class="col">
           <label for="modelo"><strong>Data de compra:</strong></label>
-          <input type="date" class="form-control" placeholder="Tempo de uso:" name="tempoUso" autocomplete="off">
+          <input type="date" required class="form-control" placeholder="Tempo de uso:" name="tempoUso" autocomplete="off">
         </div>
       </div>
       <div class="row mt-4">
@@ -40,8 +40,6 @@ if (isset($_SESSION['success'])) {
             <?php foreach ($citys as $city) : ?>
               <option value="<?php echo $city['pk_city']; ?>"><?php echo $city['numberCity'] . " | " . $city['nameCity']; ?></option>
             <?php endforeach; ?>
-
-
           </select>
         </div>
 

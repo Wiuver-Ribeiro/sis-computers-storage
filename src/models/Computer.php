@@ -22,8 +22,11 @@ class Computer extends Model
 
   public function addComputer($marca, $modelo, $numeroSerie, $tempoUso,$cidade) {
     require __DIR__."../../../connect.php";
+    // echo $numeroSerie; die();
 
     if($this->verifyExistSerialNumber($numeroSerie)) {
+      $_SESSION['success'] = "<div class='alert alert-danger' role='alert'> <strong>ERRO!</strong> ao cadastrar!</div>";
+
       return false;
     } else {
       $sql = $pdo->prepare("INSERT INTO computers (brand, model, serialNumber, timeUsed, fk_city) 
@@ -41,10 +44,15 @@ class Computer extends Model
   public function verifyExistSerialNumber($serialNumber) {
     require __DIR__."../../../connect.php";
 
-    $sql = $pdo->prepare("SELECT serialNumber from computers WHERE serialNumber = ?");
-    $sql->bindParam(1, $serialNumber);
+    $sql = $pdo->prepare("SELECT serialNumber from computers WHERE serialNumber = :serialNumber");
+    $sql->bindParam(':serialNumber',$serialNumber);
     $sql->execute();
-    ($sql->rowCount() > 0 ? false : '');
+    
+    if($sql->rowCount() > 0) {
+      return true;
+    } else {
+      return false;
+    }
   }
 
 
