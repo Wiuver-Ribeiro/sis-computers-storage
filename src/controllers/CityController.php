@@ -27,5 +27,9 @@ class CityController extends Controller {
         }
     }
 
+    public function generateReportByCity($city) {
+        echo "Gerando relatorio da cidade {$city}";
+        die();
+    }
 
 }
