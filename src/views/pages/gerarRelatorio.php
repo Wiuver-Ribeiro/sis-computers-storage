@@ -4,7 +4,7 @@
 
 <div class="container">
   <h2 class="text-center mt-3">Gerar Relatório:</h2>
-  <form action="<?php echo $base.'/gerar/{pa}';?>" method="POST">
+  <form action="<?php echo $base.'/gerar/';?>" method="POST">
     <div class="row">
       <div class="col">
         <select name="pa" id="pa" class="form-select">
