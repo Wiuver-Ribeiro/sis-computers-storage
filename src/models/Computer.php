@@ -95,14 +95,14 @@ class Computer extends Model
   public static function generateReportByCity($numberCity) {
     require __DIR__."../../../connect.php";
 
-
-    $sql = $pdo->prepare("SELECT c.model, c.brand 
+    $sql = $pdo->prepare("SELECT *
         FROM computers AS c INNER JOIN citys AS cc ON (c.fk_city = cc.pk_city) 
         WHERE cc.numberCity = :numberCity");
     $sql->bindValue(':numberCity',$numberCity); 
     $sql->execute();  
 
     $dados = $sql->fetchAll(\PDO::FETCH_ASSOC);
+    return $dados;
 
   }
 

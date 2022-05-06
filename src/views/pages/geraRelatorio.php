@@ -1,7 +1,11 @@
 <?php
 
 use Dompdf\Dompdf;
+use \src\models\Computer;
 
+$dados = Computer::generateReportByCity('00');
+print_r($dados);
+die();
 
 require_once __DIR__ .'../../../../vendor/autoload.php';
 
