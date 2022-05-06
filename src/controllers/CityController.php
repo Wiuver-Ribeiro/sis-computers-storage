@@ -3,6 +3,7 @@ namespace src\controllers;
 
 use \core\Controller;
 use \src\Models\City;
+use \src\Models\Computer;
 
 class CityController extends Controller {
 
@@ -28,8 +29,8 @@ class CityController extends Controller {
     }
 
     public function generateReportByCity($city) {
-        echo "Gerando relatorio da cidade {$city}";
-        die();
+        $city = $_POST['pa'];
+        Computer::generateReportByCity($city);
     }
 
 }
