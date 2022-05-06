@@ -31,7 +31,10 @@ class CityController extends Controller {
     public function generateReportByCity($city) {
         $city = $_POST['pa'];
         if(Computer::generateReportByCity($city)) {
-            $_SESSION['success'] = "<div class='alert alert-success' role=''>Relatório Gerado com sucesso!</div>";
+            $_SESSION['success'] = "<div class='alert alert-success' role='alert'>Relatório Gerado com sucesso!</div>";
+            $this->redirect('/gerar');
+        } else {
+            $_SESSION['success'] = "<div class='alert alert-danger' role='alert'><strong>ERRO</strong> ao tentar gerar Relatório!</div>";
             $this->redirect('/gerar');
         }
     }
